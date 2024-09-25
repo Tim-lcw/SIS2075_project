@@ -54,3 +54,22 @@ void deflate_polynomial(complex double coeffs[], int deg, complex double root, c
         deflated_coeffs[i] = coeffs[i] + root * deflated_coeffs[i - 1];
     }
 }
+
+//Jenkins-Traub algorithm for finding all roots
+void jenkins_traub(complex double coeffs[], int deg, complex double roots[]){
+    complex double deflated_coeffs[deg + 1];
+    complex double current_coeffs[deg + 1];
+    for (int i = 0; i <= deg; i++){
+        current_coeffs[i] = coeffs[i];
+    }
+    for (int i = deg; i >= 1; i--){
+        complex double z0 = 0 + 0 * I;
+        complex double root = jenkins_traub_step(current_coeffs, i, z0);   
+        roots[deg - i] = root;
+        deflate_polynomial(current_coeffs, i, root, deflated_coeffs);
+    
+        for (int j = 0; j < i; j++){
+            current_coeffs[j] = deflated_coeffs[j];
+        }
+    }
+}
