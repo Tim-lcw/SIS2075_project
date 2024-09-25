@@ -29,3 +29,15 @@ void decToBinary(int n){
     for (int j = i - 1; j >= 0; j--)
         printf("%d", binaryNum[j]);
 }
+
+long long convertBinaryToDecimal(long long n){
+    long long dec = 0;
+    int i = 0, rem;
+    while (n != 0) {
+        rem = n % 10;
+        dec += rem << i;
+        n /= 10;
+        ++i;
+    }
+    return dec;
+}
