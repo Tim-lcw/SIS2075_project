@@ -21,3 +21,28 @@ complex double eval_polynomial_derivative(complex double coeffs[], int deg, comp
     }
     return sum;
 }
+
+//Jenkins-Traub iteration 
+complex double jenkins_traub_step(complex double coeffs[], int deg, complex double z0) {
+    const int max_iterations = 1000;
+    const double tolerance = 1e-8;
+    int iteration = 0;
+    
+    complex double z = z0;
+    
+    while (iteration < max_iterations) {
+        complex double fz = eval_polynomial(coeffs, deg, z);
+        complex double fz_prime = eval_polynomial_derivative(coeffs, deg, z);
+        if (cabs(fz_prime) < tolerance) { //If derivative too small, stop iteration
+            break;
+        }
+        complex double dz = fz / fz_prime;
+        z = z - dz;
+        // Check if the change is within tolerance
+        if (cabs(dz) < tolerance) {
+            break;
+        }
+        iteration++;
+    }
+    return z;
+}
