@@ -63,7 +63,7 @@ void jenkins_traub(complex double coeffs[], int deg, complex double roots[]){
         current_coeffs[i] = coeffs[i];
     }
     for (int i = deg; i >= 1; i--){
-        complex double z0 = 0 + 0 * I;
+        complex double z0 = 0.4 + 0.9 * I;  // Improved initial guess
         complex double root = jenkins_traub_step(current_coeffs, i, z0);   
         roots[deg - i] = root;
         deflate_polynomial(current_coeffs, i, root, deflated_coeffs);
