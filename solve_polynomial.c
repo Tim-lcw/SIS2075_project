@@ -12,3 +12,12 @@ complex double eval_polynomial(complex double coeffs[], int deg, complex double 
     }
     return sum;
 }
+
+// Function to evaluate the derivative of the polynomial at complex z using Horner's Method
+complex double eval_polynomial_derivative(complex double coeffs[], int deg, complex double z) {
+    complex double sum = deg * coeffs[0];
+    for (int i = 1; i < deg; i++) {
+        sum = sum * z + (deg - i) * coeffs[i];
+    }
+    return sum;
+}
