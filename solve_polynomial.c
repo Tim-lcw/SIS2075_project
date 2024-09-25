@@ -46,3 +46,11 @@ complex double jenkins_traub_step(complex double coeffs[], int deg, complex doub
     }
     return z;
 }
+
+//Deflate polynomial 
+void deflate_polynomial(complex double coeffs[], int deg, complex double root, complex double deflated_coeffs[]) {
+    deflated_coeffs[0] = coeffs[0];
+    for (int i = 1; i < deg; i++) {
+        deflated_coeffs[i] = coeffs[i] + root * deflated_coeffs[i - 1];
+    }
+}
