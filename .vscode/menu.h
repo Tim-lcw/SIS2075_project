@@ -1,5 +1,4 @@
-#include "solve_polynomial.h"
-#include "Convertor.h"
+#include<stdio.h>
 
 int menu()
 {
@@ -7,7 +6,7 @@ int menu()
 	int choice, num;
 
 	printf("\n\n\n\n\n\t-----\t WELCOME TO Algo Minds \t-----\n");
-    printf("\n\n\n\t----\t Where we can solve all your problem \t----\n");
+    printf("\n\n\n\t----\t You don't need to use your minds \t----\n");
 	printf("\n\n\t-----\t MENU \t -----\n");
 
 	printf("1. For Polynomials \n");
@@ -19,12 +18,12 @@ int menu()
 	
 	switch (choice) {
 	case 1: {
-		solve_polynomial();
+		//solve_polynomial();
 		break;
 	}
 	case 2: {
 		//call supplier menu
-		Convertor();
+		//Convertor();
 		break;
 	}
 	default:
