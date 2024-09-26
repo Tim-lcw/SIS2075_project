@@ -11,3 +11,12 @@ float poly(float a[], int deg, float x) {
     }
     return p;
 }
+
+//Function for evaluating the derivative at some value of x
+float deriv(float a[], int deg, float x) {
+    float pd = 0;
+    for (int i = 0; i < deg; i++) { // Differentiate term by term
+        pd = pd * x + (deg - i) * a[i];
+    }
+    return pd;
+}
