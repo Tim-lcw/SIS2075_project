@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <complex.h>
 #include "solver.h"
-
-#include <stdio.h>
-#include <complex.h>
 #include <math.h>
-#include "jenkins_traub.h"
 
 //Function to evaluate polynomial at complex z using Horner's Method
 complex double eval_polynomial(complex double coeffs[], int deg, complex double z){
