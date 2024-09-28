@@ -11,14 +11,6 @@ double vectorMagnitude(double vector[], int size){
     return sqrt(sum);
 }
 
-//Function to calculate the dot product of two vectors
-double dot_product(double vector1[],double vector2[], int size){
-      double result = 0.0;
-      for(int i = 0; i < size; i++){
-        result += vector1[i] * vector2[i];
-      }
-      return result;
-}
 
 // Function to calculate the cross product of two 3D vectors
 double dot_product(double vector1[], double vector2[], int size){
@@ -55,6 +47,7 @@ int main ()
 
     //Input the first vector
     printf("Enter the elements of the elements of the first vector:\n");
+    
     for (int i = 0; i < size; i++){
         printf("Element %d:", i + 1);
         scanf("%lf",&vector1[i]);
@@ -70,7 +63,7 @@ int main ()
 
         case 1:
 
-        printf("The magnitude of the vector is %.2lf\n", vector_magnitude(vector1,size));
+        printf("The magnitude of the vector is %.2lf\n", vectorMagnitude(vector1,size));
         break;
 
         case 2:
@@ -88,7 +81,8 @@ int main ()
          
          if (size != 3){
             printf("Cross product is only defined for 3D vectors.\n");
-
+            
+         }
             else{
 
                 printf("Enter the elements of the second vector:\n");
@@ -106,7 +100,6 @@ int main ()
 
             default:
             printf("Your choice is invalid.\n");
-         }
          
          return 0;
          
