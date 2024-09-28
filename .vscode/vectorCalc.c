@@ -38,3 +38,54 @@ result[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0];
 
 }
 
+int main ()
+{
+    int size;
+    int choice;
+
+    printf("Enter the size of the vector (2 for 2D vector or 3 for 3D vector):");
+    scanf("%d",&size);
+
+    if (size != 2 && size != 3){
+        printf("This calculator is only for 2D and 3D vectors");
+        return 0;
+    }
+
+    double vector1[3],vector2[3],result[3];
+
+    //Input the first vector
+    printf("Enter the elements of the elements of the first vector:\n");
+    for (int i = 0; i < size; i++){
+        printf("Element %d:", i + 1);
+        scanf("%lf",&vector1[i]);
+    }
+
+    printf("Select the operation you want to perform:\n");
+    printf("1. Vector magnitude\n");
+    printf("2. Dot Product\n");
+    printf("3.Cross Product(Only for 3D vector)\n");
+    scanf("%d",&choice);
+
+    switch(choice){
+
+        case 1:
+
+        printf("The magnitude of the vector is %.2lf\n", vector_magnitude(vector1,size));
+        break;
+
+        case 2:
+
+        printf("Enter the elements of the second vector:\n");
+        for (int i = 0; i < size; i++){
+            printf("Element %d:", i + 1);
+            scanf("%lf", &vector2[i]);
+        }
+
+        printf("The dot product of the vector is: %.2lf\n", dot_product(vector1, vector2, size));
+        break;
+
+        case 3:
+         
+         
+    }
+}
