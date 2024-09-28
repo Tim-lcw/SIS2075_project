@@ -86,6 +86,29 @@ int main ()
 
         case 3:
          
+         if (size != 3){
+            printf("Cross product is only defined for 3D vectors.\n");
+
+            else{
+
+                printf("Enter the elements of the second vector:\n");
+        for (int i = 0; i < size; i++){
+            printf("Element %d:", i + 1);
+            scanf("%lf", &vector2[i]);
+        }
+
+        cross_product(vector1,vector2, result);
+        printf("The cross product of the vectors is : [%.2lf,%.2lf,%.2lf]", result[0],result[1],result[2]);
+
+
+            }
+            break;
+
+            default:
+            printf("Your choice is invalid.\n");
+         }
+         
+         return 0;
          
     }
 }
