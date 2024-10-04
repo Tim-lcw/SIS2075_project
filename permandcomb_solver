@@ -57,3 +57,79 @@ long long derangement(int n) {
     }
     return derange[n];
 }
+
+// Main function
+int main() {
+    int choice, n, r, k, freq[10];
+
+    printf("======================================\n");
+    printf("Permutation and Combination Operations\n");
+    printf("======================================\n");
+    printf("Choose an operation to perform:\n");
+    printf("1. Permutation P(n, r)\n");
+    printf("2. Combination C(n, r)\n");
+    printf("3. Permutation with Repetition P(n, r)\n");
+    printf("4. Combination with Repetition C(n + r - 1, r)\n");
+    printf("5. Circular Permutation P_circular(n)\n");
+    printf("6. Distinguishable Permutation\n");
+    printf("7. Derangement !n\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            printf("Enter n (total items): ");
+            scanf("%d", &n);
+            printf("Enter r (items to arrange): ");
+            scanf("%d", &r);
+            printf("Permutation P(%d, %d) = %lld\n", n, r, permutation(n, r));
+            break;
+        case 2:
+            printf("Enter n (total items): ");
+            scanf("%d", &n);
+            printf("Enter r (items to choose): ");
+            scanf("%d", &r);
+            printf("Combination C(%d, %d) = %lld\n", n, r, combination(n, r));
+            break;
+        case 3:
+            printf("Enter n (total items): ");
+            scanf("%d", &n);
+            printf("Enter r (items to arrange with repetition): ");
+            scanf("%d", &r);
+            printf("Permutation with Repetition P(%d, %d) = %lld\n", n, r, permutationWithRepetition(n, r));
+            break;
+        case 4:
+            printf("Enter n (total items): ");
+            scanf("%d", &n);
+            printf("Enter r (items to choose with repetition): ");
+            scanf("%d", &r);
+            printf("Combination with Repetition C(%d + %d - 1, %d) = %lld\n", n, r, r, combinationWithRepetition(n, r));
+            break;
+        case 5:
+            printf("Enter n (total items in a circle): ");
+            scanf("%d", &n);
+            printf("Circular Permutation P_circular(%d) = %lld\n", n, circularPermutation(n));
+            break;
+        case 6:
+            printf("Enter n (total items): ");
+            scanf("%d", &n);
+            printf("Enter the number of distinct groups (k): ");
+            scanf("%d", &k);
+            printf("Enter the frequency of each distinct group (separated by space): ");
+            for (int i = 0; i < k; i++) {
+                scanf("%d", &freq[i]);
+            }
+            printf("Distinguishable Permutation = %lld\n", distinguishablePermutation(n, freq, k));
+            break;
+        case 7:
+            printf("Enter n (total items for derangement): ");
+            scanf("%d", &n);
+            printf("Derangement !%d = %lld\n", n, derangement(n));
+            break;
+        default:
+            printf("Invalid choice! Please try again.\n");
+            break;
+    }
+
+    return 0;
+}
