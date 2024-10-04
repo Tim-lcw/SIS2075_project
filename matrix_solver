@@ -3,3 +3,23 @@
 #include <math.h>
 
 #define MAX 10 
+
+
+// Functions 
+void inputMatrix(int matrix[MAX][MAX], int rows, int cols);
+void printMatrix(int matrix[MAX][MAX], int rows, int cols);
+void matrixAddition(int A[MAX][MAX], int B[MAX][MAX], int C[MAX][MAX], int rows, int cols);
+void matrixMultiplication(int A[MAX][MAX], int B[MAX][MAX], int C[MAX][MAX], int r1, int c1, int c2);
+int determinant(int matrix[MAX][MAX], int n);
+void cofactor(int matrix[MAX][MAX], int temp[MAX][MAX], int p, int q, int n);
+void adjoint(int matrix[MAX][MAX], int adj[MAX][MAX], int n);
+int inverse(int matrix[MAX][MAX], float inverse[MAX][MAX], int n);
+void transpose(int matrix[MAX][MAX], int trans[MAX][MAX], int rows, int cols);
+void luDecomposition(int matrix[MAX][MAX], int lower[MAX][MAX], int upper[MAX][MAX], int n);
+void qrDecomposition(int matrix[MAX][MAX], float Q[MAX][MAX], float R[MAX][MAX], int rows, int cols);
+void eigenvalueDecomposition(int matrix[MAX][MAX], int rows, int cols);
+int matrixRank(int matrix[MAX][MAX], int rows, int cols);
+void choleskyDecomposition(int matrix[MAX][MAX], float lower[MAX][MAX], int n);
+float normMatrix(int matrix[MAX][MAX], int rows, int cols);
+void singularValueDecomposition(int matrix[MAX][MAX], int rows, int cols);
+void hadamardProduct(int A[MAX][MAX], int B[MAX][MAX], int C[MAX][MAX], int rows, int cols);
