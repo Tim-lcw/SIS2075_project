@@ -63,12 +63,12 @@ void runConvertor() {
     long long binaryNum;
 
     // Open the output file in write mode (to refresh/overwrite the file each time)
-    FILE *outputFile = fopen("output.txt", "w");
+    FILE *outputFile = fopen("outputConvertor.txt", "w");
     if (outputFile == NULL) {
         printf("Error opening file!\n");
         exit(1);
     }
-
+    fprintf(outputFile, "----------Conversion Start-------------\n");
     while (1) {
         // Display menu and prompt for user input
         printf("Select an operation to perform:\n");
@@ -137,14 +137,14 @@ void runConvertor() {
                 break;
             }
            case 7: { 
-                fprintf(outputFile, "-------------Conversion Complete-------------\n");
+                fprintf(outputFile, "----------Conversion Complete-------------\n");
                 fclose(outputFile);  
                 
                 // Open the output file after the program exits
                 #ifdef _WIN32
-                    system("notepad output.txt"); 
+                    system("notepad outputConvertor.txt"); 
                 #else
-                    system("open output.txt");  
+                    system("open outputConvertor.txt");  
                 #endif
                 
                 return;
