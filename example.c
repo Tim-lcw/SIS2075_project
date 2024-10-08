@@ -2,10 +2,12 @@
 #include "Convertor.h"
 #include "polynomial.h"
 #include "solver.h"
+#include"vectorCalc.h"
+
 int main(){
     
 
-    runSolver();
+    vector();
     
     return 0;
 }

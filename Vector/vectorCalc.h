@@ -1,3 +1,7 @@
+#ifndef VECTOR_CALC_H
+#define VECTOR_CALC_H
+
+
 #include<stdio.h>
 #include<math.h>
 
@@ -30,7 +34,7 @@ result[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0];
 
 }
 
-int main ()
+void vector()
 {
     int size;
     int choice;
@@ -40,7 +44,6 @@ int main ()
 
     if (size != 2 && size != 3){
         printf("This calculator is only for 2D and 3D vectors");
-        return 0;
     }
 
     double vector1[3],vector2[3],result[3];
@@ -101,7 +104,11 @@ int main ()
             default:
             printf("Your choice is invalid.\n");
          
-         return 0;
+         
          
     }
+
+
 }
+
+#endif //VECTOR_CALC_H
