@@ -23,6 +23,31 @@ void plot_function(const char *function) {
 }
 
 
+void plotGraph() {
+
+     char func1[100], func2[100];
+    int choice;
+
+    printf("Select operation:\n");
+    printf("1. Plot a function\n");
+    printf("2. Plot points of intersection between two functions\n");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        printf("Enter the function to plot (e.g., sin(x), x**2): ");
+        scanf("%s", func1);
+        plot_function(func1);
+    } else if (choice == 2) {
+        printf("Enter the first function (e.g., x**2, sin(x)): ");
+        scanf("%s", func1);
+        printf("Enter the second function (e.g., x-2): ");
+        scanf("%s", func2);
+        plot_intersection(func1, func2);
+    } else {
+        printf("Invalid choice.\n");
+    }
+
+}
 
 
 #endif //PLOTFUNC_H
