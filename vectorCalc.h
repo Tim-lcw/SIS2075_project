@@ -34,6 +34,24 @@ result[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0];
 
 }
 
+// Function to calculate the L2 norm (Euclidean norm) of a vector
+double calculateL2Norm(double vector[], int size) {
+    double sum = 0.0;
+    for (int i = 0; i < size; i++) {
+        sum += vector[i] * vector[i];
+    }
+    return sqrt(sum);
+}
+
+// Function to calculate the angle between two vectors
+double calculateAngle(double vector1[], double vector2[], int size) {
+    double dotProd = dot_product(vector1, vector2, size);
+    double magnitude1 = vectorMagnitude(vector1, size);
+    double magnitude2 = vectorMagnitude(vector2, size);
+    double cosTheta = dotProd / (magnitude1 * magnitude2);
+    return acos(cosTheta) * (180.0 / M_PI); // Return the angle in degrees
+}
+
 
 void vector()
 {
@@ -61,6 +79,8 @@ void vector()
     printf("1. Vector magnitude\n");
     printf("2. Dot Product\n");
     printf("3.Cross Product(Only for 3D vector)\n");
+    printf("4.Euclidean Norm");
+    printf("5.Angle between two Vector")
     scanf("%d",&choice);
 
     switch(choice){
@@ -101,6 +121,22 @@ void vector()
 
             }
             break;
+
+         case 4:
+            printf("The L2 norm of the vector is: %.2lf\n", calculateL2Norm(vector1, size));
+            break;
+               
+         case 5:
+            printf("Enter the elements of the second vector:\n");
+            for (int i = 0; i < size; i++) {
+                printf("Element %d: ", i + 1);
+                scanf("%lf", &vector2[i]);
+            }
+            printf("The angle between the vectors is: %.2lf degrees\n", calculateAngle(vector1, vector2, size));
+            break;
+
+
+            
 
             default:
             printf("Your choice is invalid.\n");
