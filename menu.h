@@ -10,13 +10,10 @@
 //#include "plotFunc.h"
 
 
-
-
-int menu(){
+void menuMain(){
 	float result;
-	int choice;
+	int choice, num;
 
- while(1){
 	printf("\n\n\n\n\n\t-----\t AlgoMinds Calculator \t-----\n");
 	printf("\n\n\n\t-----\t Where you don't have to use your mind \t-----\n");
 	printf("\n\n\t-----\t MENU \t -----\n");
@@ -52,7 +49,7 @@ int menu(){
 		break;
 	}
     case 5: {
-		//plotGraph();
+		plotGraph();
 		break;
 	}
     //case 6: {
@@ -63,7 +60,7 @@ int menu(){
     case 7: {
         printf("Exiting...");
 		return 0;
-		
+		break;
 	}
 	default:
 		printf("wrong Input,please try again.\n");
@@ -73,5 +70,5 @@ int menu(){
  }	
 	
 }
-    
+}
 #endif //MENU_H
