@@ -152,6 +152,14 @@ void vector() {
         putchar(c);
     }
     fclose(openFile);
+     // Open the output file after the program exits
+                #ifdef _WIN32
+                    system("notepad vector_results.txt"); 
+                #else
+                    system("open vector_results.txt");  //Mac
+                #endif
+                
+                return;
 }
 
 #endif // VECTORCALC_H
