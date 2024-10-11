@@ -62,6 +62,8 @@ void runConvertor() {
     int choice, num;
     long long binaryNum;
 
+printf("Select options for conversions and Insert [7] to show results\n");
+
     // Open the output file in write mode (to refresh/overwrite the file each time)
     FILE *outputFile = fopen("outputConvertor.txt", "w");
     if (outputFile == NULL) {
@@ -78,7 +80,7 @@ void runConvertor() {
         printf("4. Convert Decimal to Binary\n");
         printf("5. Convert Binary to Hexadecimal\n");
         printf("6. Convert Binary to Decimal\n");
-        printf("7. Exit\n");
+        printf("7. Show results\n");
         printf("Insert choice [1-7]: ");
         scanf("%d", &choice);
 
