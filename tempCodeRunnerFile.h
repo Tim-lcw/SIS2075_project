@@ -7,7 +7,7 @@
 #include "polynomial.h"
 #include "solver.h"
 #include"vectorCalc.h"
-//#include "plotFunc.h"
+#include "plotFunc.h"
 
 
 void menu(){
@@ -48,7 +48,7 @@ void menu(){
 		break;
 	}
     case 5: {
-		//plotGraph();
+		plotGraph();
 		break;
 	}
     //case 6: {

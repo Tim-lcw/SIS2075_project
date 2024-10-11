@@ -9,9 +9,15 @@
 #include"vectorCalc.h"
 //#include "plotFunc.h"
 
-void displayMenu(){
 
-printf("\n\n\n\n\n\t-----\t AlgoMinds Calculator \t-----\n");
+
+
+int menu(){
+	float result;
+	int choice;
+
+ while(1){
+	printf("\n\n\n\n\n\t-----\t AlgoMinds Calculator \t-----\n");
 	printf("\n\n\n\t-----\t Where you don't have to use your mind \t-----\n");
 	printf("\n\n\t-----\t MENU \t -----\n");
     printf("Choose a Function [1-7]\n");
@@ -21,22 +27,10 @@ printf("\n\n\n\n\n\t-----\t AlgoMinds Calculator \t-----\n");
 	printf("4. Perfom Vector operations\n");
     printf("5. Graphing Calculator\n");
 	printf("6. Matrix Operations\n");
-    printf("7. Exit Calculator\n\n");
+    printf("7. Exit Calculator\n");
+	
+	
 	printf("Enter your choice:");
-
-}
-
-
-int menu(){
-	float result;
-	int choice;
-
- while(1){
-
-    displayMenu():
-	
-	
-	
 	scanf("%d", &choice);
 	
 	

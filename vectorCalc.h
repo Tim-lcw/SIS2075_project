@@ -79,8 +79,8 @@ void vector()
     printf("1. Vector magnitude\n");
     printf("2. Dot Product\n");
     printf("3.Cross Product(Only for 3D vector)\n");
-    printf("4.Euclidean Norm");
-    printf("5.Angle between two Vector")
+    printf("4.Euclidean Norm\n");
+    printf("5.Angle between two Vector\n");
     scanf("%d",&choice);
 
     switch(choice){
