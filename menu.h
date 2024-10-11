@@ -7,15 +7,14 @@
 #include "polynomial.h"
 #include "solver.h"
 #include"vectorCalc.h"
-//#include "plotFunc.h"
+#include "plotFunc.h"
 
 
 void menuMain(){
 	float result;
 	int choice, num;
-
+while(1){
 	printf("\n\n\n\n\n\t-----\t AlgoMinds Calculator \t-----\n");
-	printf("\n\n\n\t-----\t Where you don't have to use your mind \t-----\n");
 	printf("\n\n\t-----\t MENU \t -----\n");
     printf("Choose a Function [1-7]\n");
 	printf("1. Convertor\n");
@@ -59,15 +58,12 @@ void menuMain(){
 	//}
     case 7: {
         printf("Exiting...");
-		return 0;
+		return ;
 		break;
 	}
 	default:
-		printf("wrong Input,please try again.\n");
-		
+		printf("wrong Input\n");
 	}
-
- }	
 	
 }
 }

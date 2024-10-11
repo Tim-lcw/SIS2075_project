@@ -1,158 +1,161 @@
-#ifndef VECTORCALC_H
-#define VECTORCALC_H
+#ifndef CONVERSION_H
+#define CONVERSION_H
 
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-// Function to calculate the magnitude of a vector
-double vectorMagnitude(double vector[], int size) {
-    double sum = 0.0;
-    for (int i = 0; i < size; i++) {
-        sum += vector[i] * vector[i];
+// Function prototypes
+void decToBi(int decimal, FILE *outputFile);
+void decToBinary(int n, FILE *outputFile);
+long long convertBinaryToDecimal(long long n);
+void runProgram();
+
+// Function to convert decimal to binary and write to the file
+void decToBi(int decimal, FILE *outputFile) {
+    int binary[32];
+    int i = 0;
+    if (decimal == 0) {
+        fprintf(outputFile, "0");
+    } else {
+        while (decimal > 0) {
+            binary[i] = decimal % 2;
+            decimal /= 2;
+            i++;
+        }
+        for (i = i - 1; i >= 0; i--) {
+            fprintf(outputFile, "%d", binary[i]);
+        }
     }
-    return sqrt(sum);
+    fprintf(outputFile, "\n");
 }
 
-// Function to calculate the dot product of two vectors
-double dot_product(double vector1[], double vector2[], int size) {
-    double result = 0.0;
-    for (int i = 0; i < size; i++) {
-        result += vector1[i] * vector2[i];
+// Function to convert decimal to binary and write to file
+void decToBinary(int n, FILE *outputFile) {
+    int binaryNum[32];
+    int i = 0;
+    while (n > 0) {
+        binaryNum[i] = n % 2;
+        n = n / 2;
+        i++;
     }
-    return result;
-}
-
-// Function to calculate the cross product of two 3D vectors
-void cross_product(double vector1[], double vector2[], double result[]) {
-    result[0] = vector1[1] * vector2[2] - vector1[2] * vector2[1];
-    result[1] = vector1[2] * vector2[0] - vector1[0] * vector2[2];
-    result[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0];
-}
-
-// Function to calculate the L2 norm (Euclidean norm) of a vector
-double calculateL2Norm(double vector[], int size) {
-    double sum = 0.0;
-    for (int i = 0; i < size; i++) {
-        sum += vector[i] * vector[i];
+    for (int j = i - 1; j >= 0; j--) {
+        fprintf(outputFile, "%d", binaryNum[j]);
     }
-    return sqrt(sum);
+    fprintf(outputFile, "\n");
 }
 
-// Function to calculate the angle between two vectors
-double calculateAngle(double vector1[], double vector2[], int size) {
-    double dotProd = dot_product(vector1, vector2, size);
-    double magnitude1 = vectorMagnitude(vector1, size);
-    double magnitude2 = vectorMagnitude(vector2, size);
-    double cosTheta = dotProd / (magnitude1 * magnitude2);
-    return acos(cosTheta) * (180.0 / M_PI); // Return the angle in degrees
+// Function to convert binary to decimal
+long long convertBinaryToDecimal(long long n) {
+    long long dec = 0;
+    int i = 0, rem;
+    while (n != 0) {
+        rem = n % 10;
+        dec += rem << i;
+        n /= 10;
+        ++i;
+    }
+    return dec;
 }
 
-void vector() {
-    FILE *file = fopen("vector_results.txt", "w");  // Open file to write results
-    if (file == NULL) {
+// Main logic moved to runProgram function
+void runConvertor() {
+    int choice, num;
+    long long binaryNum;
+
+printf("Select options for conversions and Insert [7] to show results\n");
+
+    // Open the output file in write mode (to refresh/overwrite the file each time)
+    FILE *outputFile = fopen("outputConvertor.txt", "w");
+    if (outputFile == NULL) {
         printf("Error opening file!\n");
-        return;
+        exit(1);
     }
+    fprintf(outputFile, "----------Conversion Start-------------\n");
+    while (1) {
+        // Display menu and prompt for user input
+        printf("Select an operation to perform:\n");
+        printf("1. Convert Hexadecimal to Denary\n");
+        printf("2. Convert Hexadecimal to Binary\n");
+        printf("3. Convert Decimal to Hexadecimal\n");
+        printf("4. Convert Decimal to Binary\n");
+        printf("5. Convert Binary to Hexadecimal\n");
+        printf("6. Convert Binary to Decimal\n");
+        printf("7. Show results\n");
+        printf("Insert choice [1-7]: ");
+        scanf("%d", &choice);
 
-    int size;
-    int choice;
-
-    printf("Enter the size of the vector (2 for 2D vector or 3 for 3D vector): ");
-    scanf("%d", &size);
-
-    if (size != 2 && size != 3) {
-        printf("This calculator is only for 2D and 3D vectors.\n");
-        fprintf(file, "This calculator is only for 2D and 3D vectors.\n");
-        fclose(file);
-        return;
-    }
-
-    double vector1[3], vector2[3], result[3];
-
-    // Input the first vector
-    printf("Enter the elements of the first vector:\n");
-    for (int i = 0; i < size; i++) {
-        printf("Element %d: ", i + 1);
-        scanf("%lf", &vector1[i]);
-    }
-
-    printf("Select the operation you want to perform:\n");
-    printf("1. Vector magnitude\n");
-    printf("2. Dot Product\n");
-    printf("3. Cross Product (Only for 3D vector)\n");
-    printf("4. Euclidean Norm\n");
-    printf("5. Angle between two Vectors\n");
-    scanf("%d", &choice);
-
-    switch (choice) {
-        case 1:
-            fprintf(file, "The magnitude of the vector is %.2lf\n", vectorMagnitude(vector1, size));
-            printf("The magnitude of the vector is %.2lf\n", vectorMagnitude(vector1, size));
-            break;
-
-        case 2:
-            printf("Enter the elements of the second vector:\n");
-            for (int i = 0; i < size; i++) {
-                printf("Element %d: ", i + 1);
-                scanf("%lf", &vector2[i]);
+        switch (choice) {
+            case 1: { //Hexadecimal to Denary
+                int hexValue;
+                printf("Insert Hexadecimal value: ");
+                scanf("%x", &hexValue);
+                fprintf(outputFile, "The denary number of %X is: %d\n", hexValue, hexValue);
+                fflush(outputFile);  // Ensure the file is updated immediately
+                break;
             }
-            fprintf(file, "The dot product of the vectors is %.2lf\n", dot_product(vector1, vector2, size));
-            printf("The dot product of the vectors is %.2lf\n", dot_product(vector1, vector2, size));
-            break;
-
-        case 3:
-            if (size != 3) {
-                fprintf(file, "Cross product is only defined for 3D vectors.\n");
-                printf("Cross product is only defined for 3D vectors.\n");
-            } else {
-                printf("Enter the elements of the second vector:\n");
-                for (int i = 0; i < size; i++) {
-                    printf("Element %d: ", i + 1);
-                    scanf("%lf", &vector2[i]);
+            case 2: { //Hexadecimal to Binary
+                printf("Insert Hexadecimal value: ");
+                scanf("%x", &num);
+                fprintf(outputFile, "The binary number of %X is: ", num);
+                decToBi(num, outputFile);
+                fflush(outputFile);  // Ensure the file is updated immediately
+                break;
+            }
+            case 3: { // Decimal to Hexadecimal
+                printf("Insert Decimal number: ");
+                scanf("%d", &num);
+                fprintf(outputFile, "The hexadecimal number of %d is: %X\n", num, num);
+                fflush(outputFile);  // Ensure the file is updated immediately
+                break;
+            }
+            case 4: { //Decimal to Binary
+                printf("Insert Decimal number: ");
+                scanf("%d", &num);
+                fprintf(outputFile, "The binary number of %d is: ", num);
+                decToBinary(num, outputFile);
+                fflush(outputFile);
+                break;
+            }
+            case 5: { //Binary to Hexadecimal
+                long int hexNum = 0, i = 1, remainder;
+                printf("Insert Binary number: ");
+                scanf("%lld", &binaryNum);
+                long int originalBinary = binaryNum; //Store original input for display
+                while (binaryNum != 0) {
+                    remainder = binaryNum % 10;
+                    hexNum = hexNum + remainder * i;
+                    i = i * 2;
+                    binaryNum = binaryNum / 10;
                 }
-                cross_product(vector1, vector2, result);
-                fprintf(file, "The cross product of the vectors is: [%.2lf, %.2lf, %.2lf]\n", result[0], result[1], result[2]);
-                printf("The cross product of the vectors is: [%.2lf, %.2lf, %.2lf]\n", result[0], result[1], result[2]);
+                fprintf(outputFile, "The hexadecimal number of %ld in binary is: %lX\n", originalBinary, hexNum);
+                fflush(outputFile);  
+                break;
             }
-            break;
-
-        case 4:
-            fprintf(file, "The L2 norm of the vector is: %.2lf\n", calculateL2Norm(vector1, size));
-            printf("The L2 norm of the vector is: %.2lf\n", calculateL2Norm(vector1, size));
-            break;
-
-        case 5:
-            printf("Enter the elements of the second vector:\n");
-            for (int i = 0; i < size; i++) {
-                printf("Element %d: ", i + 1);
-                scanf("%lf", &vector2[i]);
+            case 6: { //Binary to Decimal
+                printf("Enter a binary number: ");
+                scanf("%lld", &binaryNum);
+                fprintf(outputFile, "The decimal number of %lld in binary is: %lld\n", binaryNum, convertBinaryToDecimal(binaryNum));
+                fflush(outputFile); 
+                break;
             }
-            fprintf(file, "The angle between the vectors is: %.2lf degrees\n", calculateAngle(vector1, vector2, size));
-            printf("The angle between the vectors is: %.2lf degrees\n", calculateAngle(vector1, vector2, size));
-            break;
-
-        default:
-            fprintf(file, "Your choice is invalid.\n");
-            printf("Your choice is invalid.\n");
-            break;
+           case 7: { 
+                fprintf(outputFile, "----------Conversion Complete-------------\n");
+                fclose(outputFile);  
+                
+                // Open the output file after the program exits
+                #ifdef _WIN32
+                    system("notepad outputConvertor.txt"); 
+                #else
+                    system("open outputConvertor.txt");  
+                #endif
+                
+                return;
+            }
+            
+            default:
+                printf("Invalid option\n");
+        }
     }
-
-    fclose(file);  // Close the file after writing the results
-    printf("Results saved in 'vector_results.txt'\n");
-
-    // Open the file to view results
-    FILE *openFile = fopen("vector_results.txt", "r");
-    if (openFile == NULL) {
-        printf("Error opening file!\n");
-        return;
-    }
-    printf("\nContents of the result file:\n");
-    char c;
-    while ((c = fgetc(openFile)) != EOF) {
-        putchar(c);
-    }
-    fclose(openFile);
 }
 
-#endif // VECTORCALC_H
-
+#endif // CONVERSION_H
