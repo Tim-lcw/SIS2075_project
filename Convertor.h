@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include"menu.h"
 
 // Function prototypes
 void decToBi(int decimal, FILE *outputFile);

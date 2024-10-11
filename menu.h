@@ -7,13 +7,13 @@
 #include "polynomial.h"
 #include "solver.h"
 #include"vectorCalc.h"
-//#include "plotFunc.h"
+#include "plotFunc.h"
 
 
-int menu(){
+void menuMain(){
 	float result;
 	int choice, num;
-
+while(1){
 	printf("\n\n\n\n\n\t-----\t AlgoMinds Calculator \t-----\n");
 	printf("\n\n\t-----\t MENU \t -----\n");
     printf("Choose a Function [1-7]\n");
@@ -48,7 +48,7 @@ int menu(){
 		break;
 	}
     case 5: {
-		//plotGraph();
+		plotGraph();
 		break;
 	}
     //case 6: {
@@ -58,7 +58,7 @@ int menu(){
 	//}
     case 7: {
         printf("Exiting...");
-		return 0;
+		return ;
 		break;
 	}
 	default:
@@ -66,5 +66,5 @@ int menu(){
 	}
 	
 }
-    
+}
 #endif //MENU_H
