@@ -1,0 +1,1 @@
+The dot product of the vectors is 29100.00
