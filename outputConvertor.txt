@@ -1,0 +1,4 @@
+----------Conversion Start-------------
+The denary number of 12 is: 18
+The binary number of 34 is: 110100
+----------Conversion Complete-------------

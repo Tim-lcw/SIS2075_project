@@ -8,7 +8,7 @@
 #include "solver.h"
 #include"vectorCalc.h"
 #include "plotFunc.h"
-
+#include "matrixop.h"
 
 void menuMain(){
 	float result;
@@ -26,7 +26,7 @@ while(1){
     printf("7. Exit Calculator\n");
 	
 	
-	printf("Enter your choice:");
+	printf("Enter your choice: ");
 	scanf("%d", &choice);
 	
 	
@@ -51,11 +51,11 @@ while(1){
 		plotGraph();
 		break;
 	}
-    //case 6: {
-		//matrix operations
+    case 6: {
+		runMatOp();
 		
-		//break;
-	//}
+		break;
+	}
     case 7: {
         printf("Exiting...");
 		return ;
